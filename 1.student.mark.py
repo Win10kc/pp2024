@@ -35,4 +35,4 @@ for student_course, mark in list_student_course_mark:
     print(f"Mark: {mark}")
     print()
 
-print("The list has 5 students ")
+print(f"The list has {len(list_student)} students.")
