@@ -1,10 +1,24 @@
 
 print("Student management system go: ")
 print()
-#create a list of tuples, where each tuple contains the id, name, and DoB of a student
-list_student = [(1, 'Linh', '12/02/2003'), (2, 'Lan', '14/12/2003'), (3, 'May', '18/08/2003'), (4, 'Chung', '14/03/2003'), (5, 'Nguyen', '30/10/2003')]
 
-list_course = [(101, 'Advanced python'), (202, 'Data Structures and Algorithms'), (303, 'Machine Learning'), (404, 'Web Development'), (505, 'AI')]
+#create a list of dictionaries, where each dictionary contains student information
+list_student = [
+    {'id': 1, 'name': 'Linh', 'DoB': '12/02/2003'},
+    {'id': 2, 'name': 'Lan', 'DoB': '14/12/2003'},
+    {'id': 3, 'name': 'May', 'DoB': '18/08/2003'},
+    {'id': 4, 'name': 'Chung', 'DoB': '14/03/2003'},
+    {'id': 5, 'name': 'Nguyen', 'DoB': '30/10/2003'}
+]
+
+#create a dictionary to map course IDs to course names
+course_dict = {
+    1: 'Advanced Python',
+    2: 'Data Structures and Algorithms',
+    3: 'Machine Learning',
+    4: 'Web Development',
+    5: 'AI'
+}
 
 # List marks
 list_mark =[
@@ -20,14 +34,14 @@ list_mark =[
 list_student_course_mark = list(zip(list_student, list_course, list_mark))
 
 # Print out
-for student_course_mark in list_student_course_mark:
-    student, course, marks = student_course_mark
-    student_id, student_name, student_DoB = student
-    course_id, course_name = course
+for student in list_student:
+    student_id, student_name, student_DoB = student['id'], student['name'], student['DoB']
+    print(f"{student_name} (Student ID: {student_id}, DoB: {student_DoB}):")
 
-    print(f"Student ID: {student_id}, Student Name: {student_name}, Student DoB: {student_DoB}")
-    print(f"Course ID: {course_id}, Course Name: {course_name}")
-    print(f"Marks: {marks}")
+    for course_id, mark in enumerate(list_mark[student_id - 1]):
+        course_name = course_dict.get(course_id + 1, f"Course {course_id + 1}")
+        print(f"  {course_name}: {mark}")
+
     print()
 
 print(f"The list has {len(list_student)} students.")
