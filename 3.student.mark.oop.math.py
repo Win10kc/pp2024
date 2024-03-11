@@ -1,3 +1,5 @@
+import numpy as np
+
 print('Student managerment system go: ')
 class Student:
     def __init__(self, student_id, name, dob):
@@ -53,8 +55,6 @@ for i, student in enumerate(students):
     for j, mark in enumerate(student_marks):
         students[i].add_mark(mark)
 
-import numpy as np
-
 #Convert marks to GPA
 def calculate_gpa(mark):
     if mark >= 90:
@@ -82,15 +82,7 @@ for student in students:
     print(f"{student.name}: Average GPA = {average_gpa:.2f}")
 print()
 
-#Weighted sum of credits and marks (assuming equal weights)
-for student in students:
-    total_weighted_marks = np.sum(student.marks)
-    print(f"{student.name}: Total Weighted Marks = {total_weighted_marks}")
-print()
 
-#Sort students by GPA descending
-sorted_students = sorted(students, key=lambda s: np.mean([calculate_gpa(mark) for mark in s.marks]), reverse=True)
-print("\nStudents sorted by GPA (descending):")
 for student in sorted_students:
     print(f"{student.name}: Average GPA = {np.mean([calculate_gpa(mark) for mark in student.marks]):.2f}")
 print()
